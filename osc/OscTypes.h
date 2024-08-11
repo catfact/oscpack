@@ -38,6 +38,12 @@
 #define INCLUDED_OSCPACK_OSCTYPES_H
 
 
+#if defined(__BORLANDC__) || defined(_MSC_VER)
+#elif defined(__x86_64__) || defined(_M_X64)
+#else
+#include <cstdint>
+#endif
+
 namespace osc{
 
 // basic types
@@ -54,8 +60,10 @@ typedef unsigned long uint64;
 
 #else
 
-typedef long long int64;
-typedef unsigned long long uint64;
+//typedef long long int64;
+//typedef unsigned long long uint64;
+typedef int64_t int64;
+typedef uint64_t uint64;
 
 #endif
 
@@ -68,8 +76,10 @@ typedef unsigned int uint32;
 
 #else
 
-typedef signed long int32;
-typedef unsigned long uint32;
+//typedef signed long int32;
+//typedef unsigned long uint32;
+typedef int32_t int32;
+typedef uint32_t uint32;
 
 #endif
 
